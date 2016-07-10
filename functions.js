@@ -92,8 +92,6 @@ function checkTest() {
 
     testInputs.on('change', function () {                  //Когда меняется конкретная форма:
 
-
-
         console.log($(this).val());
         console.log(answers[$(this).data('question')]);
         console.log((span).is('span'));
