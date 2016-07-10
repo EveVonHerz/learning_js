@@ -1,0 +1,8 @@
+#test input {
+    center-block();
+}
+#test td {
+    vertical-align: middle;
+    text-align: center;
+    width: 65%;
+}
