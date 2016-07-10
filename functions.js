@@ -6,7 +6,7 @@ var buttonConsole = $('#button-console');
 buttonConsole.on('click', function1);
 
 var buttonDelete = $('#button-delete');
-buttonDelete.on('click', function () {
+buttonDelete.on  ('click', function () {
     // $ и jQuery это одно и тоже
 
     jQuery(this).hide();
