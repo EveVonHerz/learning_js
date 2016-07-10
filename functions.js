@@ -46,41 +46,41 @@ function toggle() {
 testBtn.on('click', toggle);
 
 
+/*
+ $('body').append('<div>');
+ $(".it1").after("<li class='item'>Тест</li>");
 
+ Мои попытки сделать что-нибудь дельное)
 
-    /*
-     $('body').append('<div>');
-     $(".it1").after("<li class='item'>Тест</li>");
+ function createArrayOfAnswers() {
+ var questions = [];
+ // $("#test-questions").find("input").each(function(index,element){
+ //     questions.push($(element).val());
+ // });
+ // console.log(questions);
+ // console.log(questions.length);
 
-     Мои попытки сделать что-нибудь дельное)
+ //     var i=0;
+ //     while (i<=3) {
+ //         if (questions[i] == answers[i+1]) {
+ //             console.log('Верно');
+ //             $("#test-questions").find("input").each(function(index,element){
+ //                 $(element).attr("id", "inputSuccess2");
+ //
+ //             })
+ //         } else {
+ //
+ //             console.log('Неверно');
+ //         }
+ //         i++;
+ //     }
+ }
+ */
 
-     function createArrayOfAnswers() {
-     var questions = [];
-     // $("#test-questions").find("input").each(function(index,element){
-     //     questions.push($(element).val());
-     // });
-     // console.log(questions);
-     // console.log(questions.length);
-
-     //     var i=0;
-     //     while (i<=3) {
-     //         if (questions[i] == answers[i+1]) {
-     //             console.log('Верно');
-     //             $("#test-questions").find("input").each(function(index,element){
-     //                 $(element).attr("id", "inputSuccess2");
-     //
-     //             })
-     //         } else {
-     //
-     //             console.log('Неверно');
-     //         }
-     //         i++;
-     //     }
-     }
-     */
-
-answers = {1: "\"10\"", 2: -1, 3: 1, 4: 2, 5: 6, 6: "\"9px\"", 7: "\"$45\"", 8: 2, 9: NaN, 10: "\" -9\n5\"",
-    11: -14, 12: 2, 13: 5, 14: 5, 15: 5, 16: 1, 17: "NaN", 18: "false", 19: "true"};
+answers = {
+    1: "\"10\"", 2: -1, 3: 1, 4: 2, 5: 6, 6: "\"9px\"", 7: "\"$45\"", 8: 2, 9: NaN, 10: "\" -9\n5\"",
+    11: -14, 12: 2, 13: 5, 14: 5, 15: 5, 16: 1, 17: "NaN", 18: "false", 19: "true"
+};
 
 function checkTest() {
 
@@ -106,10 +106,12 @@ function checkTest() {
             $(this).after("<span class=\"glyphicon " + right + " form-control-feedback\"></span>"); //Добавляем значок ok
 
             if (divForm.is('has-error') == true) {                       //Если у формы класс error, удаляем его
-                $('#' + $(this).data('question') + '').removeClass('has-error has-feedback');}
+                $('#' + $(this).data('question') + '').removeClass('has-error has-feedback');
+            }
 
             if (divForm.is('has-success') == false) {                    //Если у формы нет класса success, то добавляем его
-                $('#' + $(this).data('question') + '').addClass("has-success has-feedback");}
+                $('#' + $(this).data('question') + '').addClass("has-success has-feedback");
+            }
 
 
         } else {                                                        //Если введен неправильный ответ:
@@ -118,10 +120,12 @@ function checkTest() {
             $(this).after("<span class=\"glyphicon " + wrong + " form-control-feedback\"></span>"); //Добавляем значок wrong
 
             if (divForm.is('has-success') == true) {                       //Если у формы класс success, удаляем его
-                $('#' + $(this).data('question') + '').removeClass('has-success has-feedback');}
+                $('#' + $(this).data('question') + '').removeClass('has-success has-feedback');
+            }
 
             if (divForm.is('has-error') == false) {                    //Если у формы нет класса error, то добавляем его
-                $('#' + $(this).data('question') + '').addClass("has-error has-feedback");}
+                $('#' + $(this).data('question') + '').addClass("has-error has-feedback");
+            }
         }
     });
 }
