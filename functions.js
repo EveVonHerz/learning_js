@@ -77,57 +77,74 @@ testBtn.on('click', toggle);
  }
  */
 
-answers = {
-    1: "\"10\"", 2: -1, 3: 1, 4: 2, 5: 6, 6: "\"9px\"", 7: "\"$45\"", 8: 2, 9: NaN, 10: "\" -9\n5\"",
-    11: -14, 12: 2, 13: 5, 14: 5, 15: 5, 16: 1, 17: "NaN", 18: "false", 19: "true"
-};
+
+var answersArray = [
+    "\"10\"", -1, 1, 2, 6, "\"9px\"", "\"$45\"", 2, NaN, "\" -9\n5\"",
+    -14, 2, 5, 5, 5, 1, "NaN", "false", "true"
+];
+
+
+
 
 function checkTest() {
 
-    right = "glyphicon-ok";
-    wrong = "glyphicon-remove";
-    testInputs = $("#test-questions input");
-    span = $('#' + $(this).data('question') + ' span');
-    divForm = $('#' + $(this).data('question') + '');
 
-    testInputs.on('change', function () {                  //Когда меняется конкретная форма:
+    var right = "<span class=\"glyphicon glyphicon-ok form-control-feedback\"></span>";
+    var wrong = "<span class=\"glyphicon glyphicon-remove form-control-feedback\"></span>";
+    var testInputs = $('#test-questions').find('input');
+    var numberOfRightAnswers = 0;
 
-        console.log($(this).val());
-        console.log(answers[$(this).data('question')]);
-        console.log((span).is('span'));
+    function isRight(element) {
+        return element.val() == answersArray[element.data('question') - 1];
+    }
 
 
-        span.remove();
+    testInputs.on('change', function () {                                 //Когда меняется конкретная форма:
+
+        var $input = $(this),
+            $parent = $(this).parent();
 
 
-        if ($(this).val() == answers[$(this).data('question')]) {        //Если введен правильный ответ:
+        if ($input.siblings().is('span') == true) {
+            $input.siblings().remove();
+            $parent.removeClass('has-success has-error')}
 
+        if (isRight($(this))) {                                          //Если введен правильный ответ:
 
-            $(this).after("<span class=\"glyphicon " + right + " form-control-feedback\"></span>"); //Добавляем значок ok
+            $input.after(right);
 
-            if (divForm.is('has-error') == true) {                       //Если у формы класс error, удаляем его
-                $('#' + $(this).data('question') + '').removeClass('has-error has-feedback');
+            if ($parent.is('has-error') == true) {                       //Если у формы класс error, удаляем его
+                $parent.removeClass('has-error has-feedback');
             }
 
-            if (divForm.is('has-success') == false) {                    //Если у формы нет класса success, то добавляем его
-                $('#' + $(this).data('question') + '').addClass("has-success has-feedback");
+            if ($parent.is('has-success') == false) {                    //Если у формы нет класса success, то добавляем его
+                $parent.addClass("has-success has-feedback");
+                numberOfRightAnswers++;
             }
-
 
         } else {                                                        //Если введен неправильный ответ:
 
+            $input.after(wrong); //Добавляем значок wrong
 
-            $(this).after("<span class=\"glyphicon " + wrong + " form-control-feedback\"></span>"); //Добавляем значок wrong
-
-            if (divForm.is('has-success') == true) {                       //Если у формы класс success, удаляем его
-                $('#' + $(this).data('question') + '').removeClass('has-success has-feedback');
+            if ($parent.is('has-success') == true) {                       //Если у формы класс success, удаляем его
+                $parent.removeClass('has-success has-feedback');
             }
 
-            if (divForm.is('has-error') == false) {                    //Если у формы нет класса error, то добавляем его
-                $('#' + $(this).data('question') + '').addClass("has-error has-feedback");
+            if ($parent.is('has-error') == false) {                    //Если у формы нет класса error, то добавляем его
+                $parent.addClass("has-error has-feedback");
+                numberOfRightAnswers--;
             }
         }
+
+        if (numberOfRightAnswers < 0) {numberOfRightAnswers = 0};
+        $('#count').html(numberOfRightAnswers);
     });
 }
+
+function clearTestBtn() {
+    $('#test-questions').find('input').empty();
+}
+
+
 
 checkTest();
