@@ -6,3 +6,17 @@
     text-align: center;
     width: 65%;
 }
+
+div.lesson {
+    padding: 20px;
+    border-radius: 10px;
+}
+
+div.lesson:hover {
+    background-color: rgba(138, 247, 123, 0.12);
+}
+
+.animated {
+    transition-property: background-color;
+    transition-duration: 1s;
+}
