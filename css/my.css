@@ -20,3 +20,16 @@ div.lesson:hover {
     transition-property: background-color;
     transition-duration: 1s;
 }
+
+#last-even {
+    width: 40px;
+    display: inline-block;
+}
+
+#even-numbers {
+    width: 200px;
+    display: inline-block;
+}
+
+
+
