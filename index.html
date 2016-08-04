@@ -32,7 +32,7 @@
 
         </div>
 
-        <div id="content" class="col-md-8" style="text-align: justify;">
+        <div id="content" class="col-md-8 resizeInput" style="text-align: justify;">
 
             <br>
             <div class="lesson animated">
@@ -224,8 +224,17 @@
 
             <div class="lesson animated">
             <h3><strong>Урок 4</strong><small> While, For:</small></h3>
-                Четные числа от 2 до <input class="form-control input-sm" id="last-even" type="text">:
-                <input class="form-control input-sm" id="even-numbers" type="text">
+                <ol>
+                    <li>Четные числа от 2 до <input class="form-control input-sm" id="last-even" type="text">:
+                        <input class="form-control input-sm" id="even-numbers" type="text">
+                    </li>
+                    <li>
+                        Простые числа от 2 до <input class="form-control input-sm" id="last-simple" type="text">:
+                        <input class="form-control input-sm" id="simple-numbers" type="text">
+                    </li>
+                    <li><button class="btn btn-default btn-sm" onclick="over100()">Больше ста</button></li>
+                </ol>
+
 
             <br>
             </div>

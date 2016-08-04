@@ -21,15 +21,14 @@ div.lesson:hover {
     transition-duration: 1s;
 }
 
-#last-even {
+#last-even, #last-simple {
     width: 40px;
     display: inline-block;
 }
 
-#even-numbers {
+#even-numbers, #simple-numbers {
     width: 200px;
     display: inline-block;
 }
-
 
 
